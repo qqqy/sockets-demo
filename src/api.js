@@ -5,6 +5,16 @@ function subscribeToTimer(cb){
   console.log("STT invoked")
   socket.on("timer" , timestamp => cb(null , timestamp));
   socket.emit("subscribeToTimer" , 1000);
+  socket.emit("sendMessage", {
+    user: "Test Sender",
+    text: "This is our first test"
+  })
 }
 
-export {subscribeToTimer};
+function sendMessage(cb){
+  socket.on("emittedMessage" , payload => {
+    cb(payload)
+  })
+}
+
+export {subscribeToTimer , sendMessage};
