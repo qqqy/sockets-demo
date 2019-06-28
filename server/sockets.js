@@ -2,7 +2,9 @@ const io = require("socket.io")();
 const messages = []
 
 io.on("connection" , (client) => {
+  console.log('new guy')
   client.on("subscribeToTimer" , (interval) => {
+    client.join("room")
     setInterval(() => {
       client.emit("timer" , new Date())
     }, interval);
@@ -10,7 +12,7 @@ io.on("connection" , (client) => {
   client.on("sendMessage" , (message) => {
     console.log("message received," ,message)
     messages.push(message)
-    client.emit("emittedMessage" , messages)
+    io.emit("emittedMessage" , messages)
   })
 })
 
