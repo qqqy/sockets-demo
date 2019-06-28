@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import ClassComp from './ClassComp';
 import './styling.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ClassComp />, document.getElementById('root'));
