@@ -4,7 +4,6 @@ const messages = []
 io.on("connection" , (client) => {
   console.log('new guy')
   client.on("subscribeToTimer" , (interval) => {
-    client.join("room")
     setInterval(() => {
       client.emit("timer" , new Date())
     }, interval);
